@@ -100,6 +100,17 @@ func (s *Shortener) urlShortner(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Shortened URL: http://localhost:8080/%s", shortURL)
 }
 
+func (s *Shortener) home(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	var s string
+	s := "HELLO WORLD..."
+
+	fmt.Fprintf(w, "/%s", s)
+}
+
 func main() {
 	shortener := NewShortener()
 
@@ -107,6 +118,8 @@ func main() {
 
 	// Handle root endpoint
 	router.HandleFunc("/{shortURL}", shortener.RedirectHandler).Methods("GET")
+
+	router.HandleFunc("/", shortener.home).Methods("GET")
 
 	// Handle /shorten endpoint
 	router.HandleFunc("/shorten", shortener.urlShortner).Methods("POST")
