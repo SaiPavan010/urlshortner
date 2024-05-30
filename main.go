@@ -105,10 +105,10 @@ func (s *Shortener) home(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
 	}
-	var s string
-	s := "HELLO WORLD..."
+	var a string
+	a = "HELLO WORLD..."
 
-	fmt.Fprintf(w, "/%s", s)
+	fmt.Fprintf(w, "/%s", a)
 }
 
 func main() {
