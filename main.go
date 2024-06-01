@@ -105,8 +105,7 @@ func (s *Shortener) home(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
 	}
-	var a string
-	a = "HELLO WORLD..."
+	a := "HELLO WORLD..."
 
 	fmt.Fprintf(w, "/%s", a)
 }
